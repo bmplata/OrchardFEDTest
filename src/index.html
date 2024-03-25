@@ -12,21 +12,24 @@
     <!-- First block -->
     <div class="container first-container container-fluid">
         <div class="row animate__animated animate__fadeIn">
+            <!-- Image 1 -->
             <div class="col-sm">
-                <img src="assets/component-01/Image-01.jpg" alt="First Image" class="img-fluid">
+                <img src="assets/component-01/Image-01.jpg" alt="First Image" class="img-fluid" data-image="assets/component-01/Image-01.jpg">
             </div>
+            <!-- Image 2 and 3 -->
             <div class="col-sm">
                 <div class="row row-margin">
                     <div class="col-md-12">
-                        <img src="assets/component-01/Image-02.jpg" alt="Second Image" class="img-fluid">
+                        <img src="assets/component-01/Image-02.jpg" alt="Second Image" class="img-fluid" data-image="assets/component-01/Image-02.jpg">
                     </div>
                 </div>
                 <div class="row row-margin">
                     <div class="col-sm">
-                        <img src="assets/component-01/Image-03.jpg" alt="Third Image" class="img-fluid">
+                        <img src="assets/component-01/Image-03.jpg" alt="Third Image" class="img-fluid" data-image="assets/component-01/Image-03.jpg">
                     </div>
                 </div>
             </div>
+            <!-- Text content -->
             <div class="col-sm animate__animated animate__fadeInUp">
                 <div class="row">
                     <div class="col-md-12">
@@ -63,10 +66,11 @@
         </div>
         <div class="container second-container container-fluid">
             <div class="row">
+                <!-- Image 1 -->
                 <div class="col-sm">
                     <div class="row row-margin">
                         <div class="col-md-12">
-                            <img src="assets/component-02/Image-01.jpg" alt="Second Image" class="img-fluid" >
+                            <img src="assets/component-02/Image-01.jpg" alt="Second Image" class="img-fluid" data-image="assets/component-02/Image-01.jpg">
                         </div>
                     </div>
                     <div class="row row-margin">
@@ -75,14 +79,15 @@
                             <p>AEG ambassador Mark Best's summer eats are
                                 guaranteed to help you make the most of the
                                 warmer weather and entertaining at home.</p>
-                            <a href="#">READ MORE</a>
+                            <a href="#" class="animateOnClick">READ MORE</a>
                         </div>
                     </div>
                 </div>
+                <!-- Image 2 -->
                 <div class="col-sm">
                     <div class="row row-margin">
                         <div class="col-md-12">
-                            <img src="assets/component-02/Image-02.jpg" alt="Second Image" class="img-fluid" >
+                            <img src="assets/component-02/Image-02.jpg" alt="Second Image" class="img-fluid" data-image="assets/component-02/Image-02.jpg">
                         </div>
                     </div>
                     <div class="row row-margin">
@@ -91,14 +96,15 @@
                             <p>AEG ambassador Mark Best's summer eats are
                                 guaranteed to help you make the most of the
                                 warmer weather and entertaining at home.</p>
-                            <a href="#">READ MORE</a>
+                            <a href="#" class="animateOnClick">READ MORE</a>
                         </div>
                     </div>
                 </div>
+                <!-- Image 3 -->
                 <div class="col-sm">
                     <div class="row row-margin">
                         <div class="col-md-12">
-                            <img src="assets/component-02/Image-03.jpg" alt="Second Image" class="img-fluid" >
+                            <img src="assets/component-02/Image-03.jpg" alt="Second Image" class="img-fluid" data-image="assets/component-02/Image-03.jpg">
                         </div>
                     </div>
                     <div class="row row-margin">
@@ -107,12 +113,49 @@
                             <p>AEG ambassador Mark Best's summer eats are
                                 guaranteed to help you make the most of the
                                 warmer weather and entertaining at home.</p>
-                            <a href="#">READ MORE</a>
+                            <a href="#" class="animateOnClick">READ MORE</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Modal Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+        import { openModal, handleImageClick, handleLinkClick } from './index.js';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.img-fluid').forEach(function(image) {
+                image.addEventListener('click', function() {
+                    openModal(image.getAttribute('data-image'));
+                    handleImageClick(image);
+                });
+            });
+
+            document.querySelectorAll('.animateOnClick').forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    handleLinkClick(link);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
