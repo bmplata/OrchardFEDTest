@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/index.js', // Entry point of your application
+    entry: './src/index.js', 
     output: {
         path: path.resolve(__dirname, 'dist'), // Output directory
         filename: 'bundle.js', // Output bundle filename
@@ -36,15 +36,17 @@ module.exports = {
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery'
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery' 
         })
+        
     ],
     devServer: {
         static: {
             directory: path.join(__dirname, 'dist'), // Serve files from the dist directory
         },
         compress: true, // Enable gzip compression
-        port: 9000, // Port for webpack-dev-server
+        port: 1900, // Port for webpack-dev-server
         open: true, // Automatically open the default browser
     },
 };
